@@ -20,6 +20,9 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.RomanMinenok'
 
 android {
     compileSdkVersion 28
@@ -40,7 +43,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.RomanMinenok:Paper:2.7'
+    api 'com.github.RomanMinenok:Paper:2.7'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
 

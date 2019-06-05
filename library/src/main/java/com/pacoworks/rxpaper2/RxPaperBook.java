@@ -61,19 +61,29 @@ public class RxPaperBook {
         book = Paper.book();
     }
 
+    private RxPaperBook(Scheduler scheduler, String customBook) {
+        this.scheduler = scheduler;
+        book = Paper.book(customBook);
+    }
+
+    private RxPaperBook(String customBook, boolean encrypted) {
+        this.scheduler = Schedulers.io();
+        book = Paper.book(customBook, encrypted);
+    }
+
     private RxPaperBook(String customBook, Scheduler scheduler) {
         this.scheduler = scheduler;
         book = Paper.book(customBook);
     }
 
-    private RxPaperBook(Scheduler scheduler, String path) {
-        this.scheduler = scheduler;
-        book = Paper.bookOn(path);
-    }
-
     private RxPaperBook(String path, String customBook, Scheduler scheduler) {
         this.scheduler = scheduler;
         book = Paper.bookOn(path, customBook);
+    }
+
+    private RxPaperBook(String path, String customBook, Scheduler scheduler, boolean encrypted) {
+        this.scheduler = scheduler;
+        book = Paper.bookOn(path, customBook, encrypted);
     }
 
     /**
@@ -119,6 +129,19 @@ public class RxPaperBook {
     public static RxPaperBook with(String customBook) {
         assertInitialized();
         return new RxPaperBook(customBook, Schedulers.io());
+    }
+
+    /**
+     * Open a custom {@link Book} running its operations on {@link Schedulers#io()}.
+     * <p/>
+     * Requires calling {@link RxPaperBook#init(Context)} at least once beforehand.
+     *
+     * @param customBook book name
+     * @return new RxPaperBook
+     */
+    public static RxPaperBook with(String customBook, boolean encrypted) {
+        assertInitialized();
+        return new RxPaperBook(customBook, encrypted);
     }
 
     /**
@@ -206,6 +229,24 @@ public class RxPaperBook {
     public static RxPaperBook withPath(String path, String customBook, Scheduler scheduler) {
         assertInitialized();
         return new RxPaperBook(path, customBook, scheduler);
+    }
+
+    /**
+     * Open a custom {@link Book} with custom storage location path running its operations on a
+     * provided scheduler.
+     * <p/>
+     * Requires calling {@link RxPaperBook#init(Context)} at least once beforehand.
+     *
+     * @param path storage location
+     * @param scheduler scheduler where operations will be run
+     * @param customBook book name
+     * @param encrypted if databse should be encrypted
+     * @return new RxPaperBook
+     */
+    public static RxPaperBook withPath(String path, String customBook, Scheduler scheduler,
+                                       boolean encrypted) {
+        assertInitialized();
+        return new RxPaperBook(path, customBook, scheduler, encrypted);
     }
 
     /**
