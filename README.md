@@ -215,7 +215,7 @@ Add as a dependency to your `build.gradle`
     
     dependencies {
         ...
-        compile 'com.github.pakoito:RxPaper2:1.4.0'
+        compile 'com.github.RomanMinenok:RxPaper2:1.4.1'
         ...
     }
 ```
@@ -233,7 +233,7 @@ or to your `pom.xml`
     <dependency>
         <groupId>com.github.pakoito</groupId>
         <artifactId>RxPaper2</artifactId>
-        <version>1.3.0</version>
+        <version>1.4.1</version>
     </dependency>
 ```
 
