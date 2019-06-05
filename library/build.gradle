@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    api 'com.github.RomanMinenok:Paper:2.7'
+    api 'com.github.RomanMinenok:Paper:2.7.3'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
 
