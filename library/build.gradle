@@ -29,7 +29,7 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.0"
@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    api 'com.github.RomanMinenok:Paper:2.7.3'
+    api 'com.github.RomanMinenok:Paper:min-sdk-21-SNAPSHOT'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
 
